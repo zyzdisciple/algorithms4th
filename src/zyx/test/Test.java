@@ -10,11 +10,18 @@ public class Test {
 //		MyStackWithLink<String> stack = new MyStackWithLink<>();
 		MyQueueWithLink<String> stack = new MyQueueWithLink<>();
 		for (int i = 0; i < 10; i++) {
-			stack.push("string:" + i);
+			stack.push(null);
+			stack.push("abc");
 		}
 		
+		
+		String str = null;
+		
+		stack.remove(str);
+		stack.remove("abc");
+		System.out.println(stack.size());
 		for (String s : stack) {
-			System.out.println(s);
+			System.out.println(s + "");
 		}
 		
 		System.out.println("**********************************");

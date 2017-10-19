@@ -30,6 +30,7 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 		return node == null ? null : unLink(node);
 	}
 	
+	//1.3.20
 	public T remove(int index) {
 		
 		if (index >= size) {
@@ -48,6 +49,7 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 		return size;
 	}
 	
+	//1.3.24
 	public T removeAfter(int index) {
 		
 		final Node node = node(index);
@@ -60,6 +62,7 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 		return node.item;
 	}
 	
+	//1.3.25
 	public static <T> MyQueueWithLink<T> insertAfter(MyQueueWithLink<T> first, MyQueueWithLink<T> second) {
 		if (first == null && second == null) {
 			return null;
@@ -75,13 +78,73 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 		}
 	}
 	
-	public static <T> int remove(MyQueueWithLink<T> stack, T t) {
+	//1.3.26
+	//参考 LinkedList 中的 remove(Object o) 方法
+	public boolean remove(T t) {
 		
-		int index = 0;
-		int length = stack.size;
-		return 0;
+		if (t == null) {
+			for (Node x = top; x != null; x = x.next) {
+				if (x.item == null) {
+					unLink(x);
+				}
+			}
+			return true;
+		} else {
+			for (Node x = top; x != null; x = x.next) {
+				if (t.equals(x.item)) {
+					unLink(x);
+				}
+			}
+			return true;
+		}
 	}
 	
+	//1.3.27
+	public int max(Node node) {
+		
+		if (node == null) {
+			return 0;
+		}
+		
+		int max = (int) node.item;
+		int temp;
+		
+		for (; node != null; node = node.next) {
+			temp = (int) node.item;
+			if (max < temp) {
+				max = temp;
+			}
+		}
+		
+		return max;
+	}
+	
+	
+	//1.3.28
+	public int maxValue(Node node) {
+		return maxValue(node, (int) node.item);
+	}
+	
+	private int maxValue(Node node, int max) {
+		
+		//判断 node 为空直接返回
+		if (node == null) {
+			return 0;
+		}
+		//判断node是否是最后一位
+		if (node.next == null) {
+			return (int) node.item;
+		}
+		
+		int temp = (int) node.item;
+		if (max < temp) {
+			max = temp;
+		}
+		
+		return maxValue(node.next, max);
+	}
+	
+	//移除当前节点
 	private T unLink(Node node) {
 		
 		final Node pre = node.previous;
@@ -148,8 +211,11 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 	
 	private class QueueIterator implements Iterator<T> {
 
-		Node cursor = top;
-		Node lastReturned;
+		Node cursor;
+		
+		QueueIterator() {
+			cursor = top;
+		}
 		
 		@Override
 		public boolean hasNext() {
@@ -164,11 +230,6 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 			cursor = cursor.next;
 			
 			return temp;
-		}
-		
-		@Override
-		public void remove() {
-			
 		}
 		
 	}
