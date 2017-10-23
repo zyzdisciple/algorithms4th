@@ -1,6 +1,12 @@
 package zyx.suanfa.unitone;
 
-public class RandomBag<T> {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+public class RandomBag<T> implements Iterable<T> {
 
 	//在java 中由于向上转型和向下转型的存在,同时两者之间转换存在一定的问题,java不支持泛型数组, 既然不
 	//支持泛型数组, 不如就不定义泛型数组.仅在取出元素的时候, 转换为对应的类型即可;在方法的参数传递过程中,已经
@@ -39,6 +45,15 @@ public class RandomBag<T> {
 		elementData[size++] = item;
 	}
 	
+	public boolean isEmpty() {
+		
+		return size == 0;
+	}
+	
+	public int size() {
+		return size;
+	}
+	
 	public void ensureCapacity(int capacity) {
 		
 		if (capacity < size || capacity > MAX_SIZE) {
@@ -49,9 +64,12 @@ public class RandomBag<T> {
 		int arrayLength = elementData.length;
 		//当 size == 1 时  size + size >> 1 = 1;
 		int expectLength = size + size >> 1 + 1;
+		System.out.println(arrayLength);
+		System.out.println(expectLength);
 		//在这里只能用这种方式, 如果用大于号直接比较, 当 expectLength > Integer.MAX_VALUE的时候, 同样为 false;
 		//当目前容量足够, 则无需扩容;
-		if (expectLength - arrayLength <= 0) {
+		//当  size 和length = 0,时 条件为 真
+		if (expectLength - arrayLength <= 0 && arrayLength != 0) {
 			return;
 		}
 		
@@ -91,13 +109,60 @@ public class RandomBag<T> {
 	
 	public static void main(String[] args) {
 		
-		new RandomBag().test();
+		RandomBag<String> bag = new RandomBag<>(0);
+		bag.add("abc");
+		
 	}
 	
 	public void test() {
 		int a = MAX_SIZE;
 		int b = a + 8;
 		System.out.println(b - a);
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return new RandomBagIterator<T>();
+	}
+	
+	private class RandomBagIterator<T> implements Iterator<T> {
+		
+		List<Object> list;
+		int listSize;
+		
+		/*
+		 * 在ArrayList中定义有上一个元素, 在Random中无需定义, 因为每次取都是随机取出;
+		 * 
+		 * */
+		
+		public RandomBagIterator() {
+			//因为在 Bag中仅仅是遍历取出元素, 却绝对不删除元素, 因此需要新建 ArrayList,
+			/*
+			 * 在 asList的底层实现, 仅仅是另一个 将当前 array的引用 赋值给另一个, 所以所有list的操作都会改变原数据;
+			 * Arrays.asList 返回的 为  java.util.Arrays.ArrayList extends AbstractList 重新实现了对应的部分方法;
+			 * 
+			 * */
+			list = new ArrayList<> (Arrays.asList(elementData));
+			listSize = list.size();
+		}
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return listSize != 0;
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public T next() {
+			// TODO Auto-generated method stub
+			Collections.shuffle(list);
+			T item = (T) list.get(0);
+			list.remove(0);
+			return item;
+		}
+		
 	}
 	
 }
