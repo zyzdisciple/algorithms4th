@@ -1,7 +1,7 @@
-package zyx.test;
+package zyx.algorithms4th.test;
 
-import zyx.suanfa.unitone.MyQueueWithLink;
-import zyx.suanfa.unitone.MyStackWithLink;
+import zyx.algorithms4th.unitone.MyQueueWithLink;
+import zyx.algorithms4th.unitone.MyStackWithLink;
 
 public class Test {
 

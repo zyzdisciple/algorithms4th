@@ -1,4 +1,4 @@
-package zyx.test;
+package zyx.algorithms4th.test;
 
 public interface StaticInterfaceTest {
 

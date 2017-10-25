@@ -1,9 +1,8 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 public class SomeInterestingMethod {
 
 	/**
-	 * 乘法的另类定义计算方式, 如果将 + 换成 * 并将 return 0 换成 return 1 则是求 a 的 b 次方; 忽略b的正负号;
 	 * @param a
 	 * @param b
 	 * @return

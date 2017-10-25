@@ -1,4 +1,4 @@
-package zyx.suanfa.interestingdesigner;
+package zyx.algorithms4th.interestingdesigner;
 
 public class Date {
 
@@ -15,7 +15,7 @@ public class Date {
 	}
 	
 	/**
-	 *  é™¤32, (k*16*y + m) % 16 = m
+	 *  é™?32, (k*16*y + m) % 16 = m
 	 * @return
 	 */
 	public int month() {

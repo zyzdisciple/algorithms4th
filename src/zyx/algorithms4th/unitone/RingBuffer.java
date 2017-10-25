@@ -1,9 +1,9 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 /**
- * ÄÑµã: ÒòÎªÈç¹ûÊÇ³£¹æµÄÊı×é´æÈ¡µÄ»°, ºÍÖ®Ç°µÄÊµÏÖ·½Ê½ÏàÍ¬, Ôò»á³öÏÖÃ¿´Î½øĞĞ(´æÈ¡¾ùÓĞ)¶¼ĞèÒª copy Êı×é, ´øÀ´¿ªÏú, 
- * µ«Êı×éµÄ´æÈ¡ÆµÂÊÓÖ»áÌØ±ğ¸ß, ËùÒÔ¼´Ê¹ÄÜÊµÏÖ, ´ú¼ÛÒÀ¾ÉÌ«¸ß
- * ĞèÒª×ÔĞĞÅĞ¶ÏÊı×éÊÇ·ñÎª¿Õ »òÒÑ¾­ÂúÁË;
+ * éš¾ç‚¹: å› ä¸ºå¦‚æœæ˜¯å¸¸è§„çš„æ•°ç»„å­˜å–çš„è¯, å’Œä¹‹å‰çš„å®ç°æ–¹å¼ç›¸åŒ, åˆ™ä¼šå‡ºç°æ¯æ¬¡è¿›è¡Œ(å­˜å–å‡æœ‰)éƒ½éœ€è¦ copy æ•°ç»„, å¸¦æ¥å¼€é”€, 
+ * ä½†æ•°ç»„çš„å­˜å–é¢‘ç‡åˆä¼šç‰¹åˆ«é«˜, æ‰€ä»¥å³ä½¿èƒ½å®ç°, ä»£ä»·ä¾æ—§å¤ªé«˜
+ * éœ€è¦è‡ªè¡Œåˆ¤æ–­æ•°ç»„æ˜¯å¦ä¸ºç©º æˆ–å·²ç»æ»¡äº†;
  * @author zyzdisciple
  *
  * @param <T>
@@ -12,20 +12,20 @@ public class RingBuffer<T> {
 
 	private Object[] elementData;
 	private static final int DEFAULT_SIZE = 16;
-	//ÊµÊ±±íÊ¾Êı×éµ±Ç°µÄ´æÁ¿,¿ØÖÆÏß³ÌµÈ´ı»ò²»µÈ´ı
+	//å®æ—¶è¡¨ç¤ºæ•°ç»„å½“å‰çš„å­˜é‡,æ§åˆ¶çº¿ç¨‹ç­‰å¾…æˆ–ä¸ç­‰å¾…
 	private volatile int size;
-	//±£´æ½øÈëµÄÏÂ±ê,±íÊ¾´ÓÊı×éµ±Ç°µÄÄÄÒ»¸öÎ»ÖÃÌî³ä
+	//ä¿å­˜è¿›å…¥çš„ä¸‹æ ‡,è¡¨ç¤ºä»æ•°ç»„å½“å‰çš„å“ªä¸€ä¸ªä½ç½®å¡«å……
 	private volatile int in;
-	//±£´æ³öµÄÏÂ±ê, ±íÊ¾Êı×é´Óµ±Ç°ÄÄ¸öindex È¡³ö
+	//ä¿å­˜å‡ºçš„ä¸‹æ ‡, è¡¨ç¤ºæ•°ç»„ä»å½“å‰å“ªä¸ªindex å–å‡º
 	private volatile int out;
 	
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	public RingBuffer() {
 		
 		elementData = new Object[DEFAULT_SIZE];
 	}
 	
-	//½ÓÊÜ³¤¶È, ³õÊ¼»¯
+	//æ¥å—é•¿åº¦, åˆå§‹åŒ–
 	public RingBuffer(int length) {
 		
 		if (length <= 0) {
@@ -35,23 +35,23 @@ public class RingBuffer<T> {
 	}
 	
 	
-	//Ïò»º³åÇøÌî³äÊı¾İ, ·µ»ØÖµ²»Îª boolean, Ê¹µÃadd½ö½öÊÇÌî³äÊı¾İ, ²»×ö isFull()µÄ¹¦ÄÜ
+	//å‘ç¼“å†²åŒºå¡«å……æ•°æ®, è¿”å›å€¼ä¸ä¸º boolean, ä½¿å¾—addä»…ä»…æ˜¯å¡«å……æ•°æ®, ä¸åš isFull()çš„åŠŸèƒ½
 	public void add(T item) {
 		
 		if (isFull()) {
-			throw new RuntimeException("»º³åÇøÒÑÂú");
+			throw new RuntimeException("ç¼“å†²åŒºå·²æ»¡");
 		}
 		elementData[in++] = item;
 		ringIn();
 		size++;
 	}
 	
-	//È¡³öÊı¾İ
+	//å–å‡ºæ•°æ®
 	@SuppressWarnings("unchecked")
 	public T get() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("»º³åÇøÎª¿Õ");
+			throw new RuntimeException("ç¼“å†²åŒºä¸ºç©º");
 		}
 		T item =(T) elementData[out];
 		elementData[out++] = null;
@@ -60,12 +60,12 @@ public class RingBuffer<T> {
 		return item;
 	}
 
-	//2017Äê10ÔÂ25ÈÕ08:45:47
-	//À©Èİ/ËõÈİ   »º³åÇø
+	//2017å¹´10æœˆ25æ—¥08:45:47
+	//æ‰©å®¹/ç¼©å®¹   ç¼“å†²åŒº
 	public void resizeBuffer(int capacity) {
 		int tempSize = size;
 		if (capacity <= size) {
-			throw new RuntimeException("ÈİÁ¿ÉèÖÃ¹ıĞ¡");
+			throw new RuntimeException("å®¹é‡è®¾ç½®è¿‡å°");
 		}
 		Object[] newObj = new Object[capacity];
 		int index = 0;
@@ -80,41 +80,41 @@ public class RingBuffer<T> {
 		in = size - 1;
 	}
 	
-	//µ±Ç°»º³åÇøÈİÁ¿
+	//å½“å‰ç¼“å†²åŒºå®¹é‡
 	public int size() {
 		
 		return size;
 	}
 	
-	//»º³åÇøÊÇ·ñÒÑÂú
+	//ç¼“å†²åŒºæ˜¯å¦å·²æ»¡
 	public boolean isFull() {
 		
 		return size >= elementData.length;
 	}
 	
-	//»º³åÇøÊÇ·ñÎª¿Õ
+	//ç¼“å†²åŒºæ˜¯å¦ä¸ºç©º
 	public boolean isEmpty() {
 		
 		return size <= 0;
 	}
 	
-	//Çå¿Õ»º³åÇø
+	//æ¸…ç©ºç¼“å†²åŒº
 	public void clear() {
-		//Ö±½ÓÉ¾³ıÔ­Êı×éµÄÒıÓÃ, ÒÔÇå¿ÕÊı×é;·½±ã»ØÊÕ;
+		//ç›´æ¥åˆ é™¤åŸæ•°ç»„çš„å¼•ç”¨, ä»¥æ¸…ç©ºæ•°ç»„;æ–¹ä¾¿å›æ”¶;
 		Object[] tempArray = new Object[elementData.length];
 		elementData = tempArray;
 		in = out = size = 0;
 	}
 	
 	private void ringIn() {
-		//Èç¹ûÊı×éµÄ in µ½´ïÄ©Î², ´ËÊ±in++Îª length, ÔòÖ¸ÏòÊı×éµÄ 0 Î»ÖÃ
+		//å¦‚æœæ•°ç»„çš„ in åˆ°è¾¾æœ«å°¾, æ­¤æ—¶in++ä¸º length, åˆ™æŒ‡å‘æ•°ç»„çš„ 0 ä½ç½®
 		if (in == elementData.length) {
 			in = 0;
 		}
 	}
 	
 	private void ringOut() {
-		//µ±outÖ¸Ïòµ±Ç°ÒªÈ¡³öÊı¾İµÄÎ»ÖÃ, Ôòµ± Ö¸ÏòÄ©Î²Ê±, out++ ÔòÎª length, ĞèÒªÈ¥Ö¸ÏòÊı×éµÄ¿ªÍ·;
+		//å½“outæŒ‡å‘å½“å‰è¦å–å‡ºæ•°æ®çš„ä½ç½®, åˆ™å½“ æŒ‡å‘æœ«å°¾æ—¶, out++ åˆ™ä¸º length, éœ€è¦å»æŒ‡å‘æ•°ç»„çš„å¼€å¤´;
 		if (out == elementData.length) {
 			out = 0;
 		}
@@ -125,7 +125,7 @@ public class RingBuffer<T> {
 		int index = 0;
 		for(int i = 0; i < 16; i++) {
 			if (!rb.isFull()) {
-				rb.add("ÕâÊÇµÚ" + index + "¸öÊıµÄµÚÒ»´ÎÌí¼Ó");
+				rb.add("è¿™æ˜¯ç¬¬" + index + "ä¸ªæ•°çš„ç¬¬ä¸€æ¬¡æ·»åŠ ");
 				index++;
 			}
 		}
@@ -136,7 +136,7 @@ public class RingBuffer<T> {
 		
 		for(int i = 0; i < 12; i++) {
 			if (!rb.isFull()) {
-				rb.add("ÕâÊÇµÚ" + index + "¸öÎ»ÖÃµÄµÚ¶ş´ÎÌí¼Ó");
+				rb.add("è¿™æ˜¯ç¬¬" + index + "ä¸ªä½ç½®çš„ç¬¬äºŒæ¬¡æ·»åŠ ");
 				index++;
 			}
 		}
@@ -149,7 +149,7 @@ public class RingBuffer<T> {
 		
 		for(int i = 0; i < 12; i++) {
 			if (!rb.isFull()) {
-				rb.add("ÕâÊÇµÚ" + index + "¸öÎ»ÖÃµÄµÚÈı´ÎÌí¼Ó");
+				rb.add("è¿™æ˜¯ç¬¬" + index + "ä¸ªä½ç½®çš„ç¬¬ä¸‰æ¬¡æ·»åŠ ");
 				index++;
 			}
 		}

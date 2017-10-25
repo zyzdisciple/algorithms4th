@@ -1,8 +1,7 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 import java.util.Iterator;
 /**
- * 鐢变簬鏍堟湰韬殑鐗圭偣灏辨槸, 鍏堣繘鍚庡嚭, 鍥犳浠呭疄鐜颁互涓嬪嚑涓柟娉曞嵆鍙�;
  * @author Administrator
  *
  * @param <T>
@@ -68,13 +67,13 @@ public class MyStackWithLink<T> implements Iterable<T> {
 		Node pCur = pre.next;
 		
 		while (pCur != null) {
-			//令原链表的首节点指向新表的剩余节点
+			//令原链表的首节点指向新表的剩余节�?
 			pre.next = pCur.next;
-			//令将反转的节点指向现在的首节点
+			//令将反转的节点指向现在的首节�?
 			pCur.next = dummy.next;
 			//令虚拟节点指向新链表的首节点
 			dummy.next = pCur;
-			//反转节点下移一位
+			//反转节点下移�?�?
 			pCur = pre.next;
 		}
 		

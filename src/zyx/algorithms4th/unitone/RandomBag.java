@@ -1,4 +1,4 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,9 +8,9 @@ import java.util.List;
 
 public class RandomBag<T> implements Iterable<T> {
 
-	//ÔÚjava ÖĞÓÉÓÚÏòÉÏ×ªĞÍºÍÏòÏÂ×ªĞÍµÄ´æÔÚ,Í¬Ê±Á½ÕßÖ®¼ä×ª»»´æÔÚÒ»¶¨µÄÎÊÌâ,java²»Ö§³Ö·ºĞÍÊı×é, ¼ÈÈ»²»
-	//Ö§³Ö·ºĞÍÊı×é, ²»Èç¾Í²»¶¨Òå·ºĞÍÊı×é.½öÔÚÈ¡³öÔªËØµÄÊ±ºò, ×ª»»Îª¶ÔÓ¦µÄÀàĞÍ¼´¿É;ÔÚ·½·¨µÄ²ÎÊı´«µİ¹ı³ÌÖĞ,ÒÑ¾­
-	//¿ÉÒÔ¶ÔÀàĞÍ½øĞĞÏŞ¶¨;
+	//åœ¨java ä¸­ç”±äºå‘ä¸Šè½¬å‹å’Œå‘ä¸‹è½¬å‹çš„å­˜åœ¨,åŒæ—¶ä¸¤è€…ä¹‹é—´è½¬æ¢å­˜åœ¨ä¸€å®šçš„é—®é¢˜,javaä¸æ”¯æŒæ³›å‹æ•°ç»„, æ—¢ç„¶ä¸
+	//æ”¯æŒæ³›å‹æ•°ç»„, ä¸å¦‚å°±ä¸å®šä¹‰æ³›å‹æ•°ç»„.ä»…åœ¨å–å‡ºå…ƒç´ çš„æ—¶å€™, è½¬æ¢ä¸ºå¯¹åº”çš„ç±»å‹å³å¯;åœ¨æ–¹æ³•çš„å‚æ•°ä¼ é€’è¿‡ç¨‹ä¸­,å·²ç»
+	//å¯ä»¥å¯¹ç±»å‹è¿›è¡Œé™å®š;
 	//private T[] elementData;
 	private Object[] elementData;
 	
@@ -18,10 +18,10 @@ public class RandomBag<T> implements Iterable<T> {
 	
 	private static final int DEFAULT_CAPACITY = 16;
 	
-	//²Î¿¼ArrayList, ÎªÁËÊ¹µÃËùÓĞµÄ¿ÕÊı×é¹²Í¬Ö¸ÏòÍ¬Ò»¸öµØÖ·, Ôò¶¨Òå³£Á¿;
+	//å‚è€ƒArrayList, ä¸ºäº†ä½¿å¾—æ‰€æœ‰çš„ç©ºæ•°ç»„å…±åŒæŒ‡å‘åŒä¸€ä¸ªåœ°å€, åˆ™å®šä¹‰å¸¸é‡;
 	private static final Object[] EMPTY_ELEMENTDATE = {};
 	
-	//¸ù¾İArrayList½âÊÍ, Ä³Ğ©JVM»áÔÚ arrayÇ°¼ÓÉÏÍ·,»áµ¼ÖÂoutOfMemory
+	//æ ¹æ®ArrayListè§£é‡Š, æŸäº›JVMä¼šåœ¨ arrayå‰åŠ ä¸Šå¤´,ä¼šå¯¼è‡´outOfMemory
 	private static final int MAX_SIZE = Integer.MAX_VALUE - 8;
 	
 	//ArrayList
@@ -57,27 +57,27 @@ public class RandomBag<T> implements Iterable<T> {
 	public void ensureCapacity(int capacity) {
 		
 		if (capacity < size || capacity > MAX_SIZE) {
-			//ËùÒÔÖ»ÄÜÊÇ×Ô¼ºÖ÷¶¯À©ÈİÊ±³ö´í;
+			//æ‰€ä»¥åªèƒ½æ˜¯è‡ªå·±ä¸»åŠ¨æ‰©å®¹æ—¶å‡ºé”™;
 			throw new RuntimeException("illegal argument:" + capacity + ", atLeast:" + size);
 		}
 		
 		int arrayLength = elementData.length;
-		//µ± size == 1 Ê±  size + size >> 1 = 1;
+		//å½“ size == 1 æ—¶  size + size >> 1 = 1;
 		int expectLength = size + size >> 1 + 1;
 		System.out.println(arrayLength);
 		System.out.println(expectLength);
-		//ÔÚÕâÀïÖ»ÄÜÓÃÕâÖÖ·½Ê½, Èç¹ûÓÃ´óÓÚºÅÖ±½Ó±È½Ï, µ± expectLength > Integer.MAX_VALUEµÄÊ±ºò, Í¬ÑùÎª false;
-		//µ±Ä¿Ç°ÈİÁ¿×ã¹», ÔòÎŞĞèÀ©Èİ;
-		//µ±  size ºÍlength = 0,Ê± Ìõ¼şÎª Õæ
+		//åœ¨è¿™é‡Œåªèƒ½ç”¨è¿™ç§æ–¹å¼, å¦‚æœç”¨å¤§äºå·ç›´æ¥æ¯”è¾ƒ, å½“ expectLength > Integer.MAX_VALUEçš„æ—¶å€™, åŒæ ·ä¸º false;
+		//å½“ç›®å‰å®¹é‡è¶³å¤Ÿ, åˆ™æ— éœ€æ‰©å®¹;
+		//å½“  size å’Œlength = 0,æ—¶ æ¡ä»¶ä¸º çœŸ
 		if (expectLength - arrayLength <= 0 && arrayLength != 0) {
 			return;
 		}
 		
-		//µ±ÈİÁ¿ÒÑ¾­µÈÓÚ ×î´óÖµ, ÄÚ´æÒç³ö;
+		//å½“å®¹é‡å·²ç»ç­‰äº æœ€å¤§å€¼, å†…å­˜æº¢å‡º;
 		if (size == MAX_SIZE) {
 			throw new OutOfMemoryError();
 		}
-		//Í¬ÉÏ, µ±Êı×é³¤¶ÈÎª1 Ê±;
+		//åŒä¸Š, å½“æ•°ç»„é•¿åº¦ä¸º1 æ—¶;
 		int expectedSizeMin = arrayLength + arrayLength >> 1 + 1;
 		if (expectedSizeMin - MAX_SIZE > 0) {
 			expectedSizeMin = MAX_SIZE;
@@ -89,13 +89,13 @@ public class RandomBag<T> implements Iterable<T> {
 	}
 	
 	private void dilatation(int capacity) {
-		//Ç·¿¼ÂÇ, µ±Êı×é³¤¶È´óÓÚ Integer.MaxValue(Ä¿Ç°ÒÑ¾ÀÕı)
+		//æ¬ è€ƒè™‘, å½“æ•°ç»„é•¿åº¦å¤§äº Integer.MaxValue(ç›®å‰å·²çº æ­£)
 		Object[] newArray = new Object[capacity];
 		System.arraycopy(elementData, 0, newArray, 0, elementData.length);
 		elementData = newArray;
 	}
 	
-	//ÄÚ²¿Ä¬ÈÏÖ´ĞĞÈİÁ¿È·ÈÏ
+	//å†…éƒ¨é»˜è®¤æ‰§è¡Œå®¹é‡ç¡®è®¤
 	private void ensureCapacityInterval() {
 		
 		int capacity = 0;
@@ -132,15 +132,15 @@ public class RandomBag<T> implements Iterable<T> {
 		int listSize;
 		
 		/*
-		 * ÔÚArrayListÖĞ¶¨ÒåÓĞÉÏÒ»¸öÔªËØ, ÔÚRandomÖĞÎŞĞè¶¨Òå, ÒòÎªÃ¿´ÎÈ¡¶¼ÊÇËæ»úÈ¡³ö;
+		 * åœ¨ArrayListä¸­å®šä¹‰æœ‰ä¸Šä¸€ä¸ªå…ƒç´ , åœ¨Randomä¸­æ— éœ€å®šä¹‰, å› ä¸ºæ¯æ¬¡å–éƒ½æ˜¯éšæœºå–å‡º;
 		 * 
 		 * */
 		
 		public RandomBagIterator() {
-			//ÒòÎªÔÚ BagÖĞ½ö½öÊÇ±éÀúÈ¡³öÔªËØ, È´¾ø¶Ô²»É¾³ıÔªËØ, Òò´ËĞèÒªĞÂ½¨ ArrayList,
+			//å› ä¸ºåœ¨ Bagä¸­ä»…ä»…æ˜¯éå†å–å‡ºå…ƒç´ , å´ç»å¯¹ä¸åˆ é™¤å…ƒç´ , å› æ­¤éœ€è¦æ–°å»º ArrayList,
 			/*
-			 * ÔÚ asListµÄµ×²ãÊµÏÖ, ½ö½öÊÇÁíÒ»¸ö ½«µ±Ç° arrayµÄÒıÓÃ ¸³Öµ¸øÁíÒ»¸ö, ËùÒÔËùÓĞlistµÄ²Ù×÷¶¼»á¸Ä±äÔ­Êı¾İ;
-			 * Arrays.asList ·µ»ØµÄ Îª  java.util.Arrays.ArrayList extends AbstractList ÖØĞÂÊµÏÖÁË¶ÔÓ¦µÄ²¿·Ö·½·¨;
+			 * åœ¨ asListçš„åº•å±‚å®ç°, ä»…ä»…æ˜¯å¦ä¸€ä¸ª å°†å½“å‰ arrayçš„å¼•ç”¨ èµ‹å€¼ç»™å¦ä¸€ä¸ª, æ‰€ä»¥æ‰€æœ‰listçš„æ“ä½œéƒ½ä¼šæ”¹å˜åŸæ•°æ®;
+			 * Arrays.asList è¿”å›çš„ ä¸º  java.util.Arrays.ArrayList extends AbstractList é‡æ–°å®ç°äº†å¯¹åº”çš„éƒ¨åˆ†æ–¹æ³•;
 			 * 
 			 * */
 			list = new ArrayList<> (Arrays.asList(elementData));

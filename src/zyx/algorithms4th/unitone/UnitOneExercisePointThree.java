@@ -1,4 +1,4 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 public class UnitOneExercisePointThree {
 
@@ -16,7 +16,7 @@ public class UnitOneExercisePointThree {
 			if (size < array.length) {
 				array[size++] = item;
 			} else {
-				throw new RuntimeException("存入数据过多， 栈溢出");
+				throw new RuntimeException("存入数据过多栈溢出");
 			}
 		}
 		

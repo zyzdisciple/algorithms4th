@@ -1,4 +1,4 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 import java.util.Iterator;
 
@@ -79,7 +79,7 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 	}
 	
 	//1.3.26
-	//²Î¿¼ LinkedList ÖĞµÄ remove(Object o) ·½·¨
+	//å‚è€ƒ LinkedList ä¸­çš„ remove(Object o) æ–¹æ³•
 	public boolean remove(T t) {
 		
 		if (t == null) {
@@ -127,11 +127,11 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 	
 	private int maxValue(Node node, int max) {
 		
-		//ÅĞ¶Ï node Îª¿ÕÖ±½Ó·µ»Ø
+		//åˆ¤æ–­ node ä¸ºç©ºç›´æ¥è¿”å›
 		if (node == null) {
 			return 0;
 		}
-		//ÅĞ¶ÏnodeÊÇ·ñÊÇ×îºóÒ»Î»
+		//åˆ¤æ–­nodeæ˜¯å¦æ˜¯æœ€åä¸€ä½
 		if (node.next == null) {
 			return (int) node.item;
 		}
@@ -144,7 +144,7 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 		return maxValue(node.next, max);
 	}
 	
-	//ÒÆ³ıµ±Ç°½Úµã
+	//ç§»é™¤å½“å‰èŠ‚ç‚¹
 	private T unLink(Node node) {
 		
 		final Node pre = node.previous;
@@ -179,7 +179,7 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 	private Node node(int index) {
 		
 		if (index >= size || index < 0) {
-			throw new RuntimeException("³¬³öÁ´±í³¤¶È");
+			throw new RuntimeException("è¶…å‡ºé“¾è¡¨é•¿åº¦");
 		}
 		
 		Node node;

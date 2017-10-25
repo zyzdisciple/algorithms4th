@@ -1,7 +1,7 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 /**
- * ´´½¨¶ÔÓ¦ÊµÀı
+ * åˆ›å»ºå¯¹åº”å®ä¾‹
  * @author Administrator
  *
  */
@@ -26,11 +26,11 @@ public class LinkInstance {
 		while( count != 1) {
 			int killIndex = (number % count == 0 ? number : number % count) - 1;
 			int index = people.remove(killIndex) + 1;
-			System.out.println("µÚ" + index + "ÈË±»É±ËÀ");
+			System.out.println("ç¬¬" + index + "äººè¢«æ€æ­»");
 			count--;
 		}
 		
-		System.out.println("»îÏÂÀ´µÄÊÇ" + (people.pop() + 1));
+		System.out.println("æ´»ä¸‹æ¥çš„æ˜¯" + (people.pop() + 1));
 	}
 	
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package zyx.suanfa.unitone;
+package zyx.algorithms4th.unitone;
 
 import java.util.Scanner;
 
@@ -31,7 +31,7 @@ public class UnitOneExercisePonitOne {
 	private static int e14(int n) {
 		
 		if (n <= 0) {
-			throw new RuntimeException("n只能为正数");
+			throw new RuntimeException("n只能为正�?");
 		} else  {
 			int result = 0;
 			
@@ -85,7 +85,7 @@ public class UnitOneExercisePonitOne {
 	}
 	
 	/**
-	 * n的阶乘
+	 * n的阶�?
 	 * @param n
 	 * @return
 	 */
@@ -162,8 +162,8 @@ System.out.println(deep);
 		return e_24(a % b , b);
 	}
 	/**
-	 * 无法完成, 因为 无论怎样都会存在数据丢失, 无法保存的现象, 但对于中位数而言, 需要所有数据才能确定.
-	 * 当结果与 数组长度相关时, 即无法实现.
+	 * 无法完成, 因为 无论怎样都会存在数据丢失, 无法保存的现实, 但对于中位数而言, 必须要遍历所有数据.
+	 * 当结果与 数组长度相关, 即无法实现.
 	 */
 	private static void e_34_2() {
 		
