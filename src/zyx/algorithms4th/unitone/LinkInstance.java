@@ -10,7 +10,7 @@ public class LinkInstance {
 	//1.3.37
 	public static void Josephus(int count, int number) {
 		
-		MyQueueWithLink<Integer> people = new MyQueueWithLink<>();
+		QueueWithLink<Integer> people = new QueueWithLink<>();
 		if (count <= 0) {
 			throw new RuntimeException("illegalArgument: count" + count);
 		}

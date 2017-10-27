@@ -10,13 +10,13 @@ public class TextEditBuffer {
 	//前半段采用栈, LIFO 的特点, 可以从缓冲区的后半段截取;
 	//形象说明的话, 前半段栈向右延伸, 头在右边, 后半段向左延伸, 头在左边
 	//同时 frontBuffer 的 头表示光标所在的位置;
-	private MyStackWithLink<Character> frontBuffer;
+	private StackWithLink<Character> frontBuffer;
 	//后半段同样采用 栈, 每次右移动的时候, 都是将最近插入的数据 pop取出来;
-	private MyStackWithLink<Character> behindBuffer;
+	private StackWithLink<Character> behindBuffer;
 	
 	public TextEditBuffer() {
-		frontBuffer = new MyStackWithLink<Character> ();
-		behindBuffer = new MyStackWithLink<Character> ();
+		frontBuffer = new StackWithLink<Character> ();
+		behindBuffer = new StackWithLink<Character> ();
 	}
 	
 	public void insert(char c) {

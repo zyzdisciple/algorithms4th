@@ -11,7 +11,7 @@ public class UnitOneExercisePointFour {
 	}
 	 
 	private static boolean e_4(String s) {
-		MyStackWithLink<String> stack = new MyStackWithLink<> ();
+		StackWithLink<String> stack = new StackWithLink<> ();
 		String[] strArray = s.split("");
 		String strs = "{[()]}";
 		for (String str : strArray) {

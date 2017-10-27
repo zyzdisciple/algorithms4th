@@ -6,7 +6,7 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public class MyStackWithLink<T> implements Iterable<T> {
+public class StackWithLink<T> implements Iterable<T> {
 
 	private Node top;
 	private int size;
@@ -35,7 +35,7 @@ public class MyStackWithLink<T> implements Iterable<T> {
 		}
 	}
 	
-	public boolean contain(MyStackWithLink<T> stack, T item) {
+	public boolean contain(StackWithLink<T> stack, T item) {
 		for (T t : stack) {
 			if (item.equals(t)) {
 				return true;

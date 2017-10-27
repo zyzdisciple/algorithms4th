@@ -2,7 +2,7 @@ package zyx.algorithms4th.unitone;
 
 import java.util.Iterator;
 
-public class MyQueueWithLink<T> implements Iterable<T> {
+public class QueueWithLink<T> implements Iterable<T> {
 
 	private int size;
 	private Node top;
@@ -63,7 +63,7 @@ public class MyQueueWithLink<T> implements Iterable<T> {
 	}
 	
 	//1.3.25
-	public static <T> MyQueueWithLink<T> insertAfter(MyQueueWithLink<T> first, MyQueueWithLink<T> second) {
+	public static <T> QueueWithLink<T> insertAfter(QueueWithLink<T> first, QueueWithLink<T> second) {
 		if (first == null && second == null) {
 			return null;
 		} else if (first == null || second == null) {

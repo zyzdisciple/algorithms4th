@@ -2,18 +2,18 @@ package zyx.algorithms4th.unitone;
 
 import java.util.Iterator;
 
-public class MyStackWithArray<T> implements Iterable<T>{
+public class StackWithArray<T> implements Iterable<T>{
 	
 	private int size;
 	private T[] array;
 	
 	@SuppressWarnings("unchecked")
-	public MyStackWithArray() {
+	public StackWithArray() {
 		array =(T[]) new Object[4];
 	}
 	
 	@SuppressWarnings("unchecked")
-	public MyStackWithArray(int size) {
+	public StackWithArray(int size) {
 		array =(T[]) new Object[size];
 	}
 	
