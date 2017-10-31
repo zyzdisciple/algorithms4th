@@ -1,5 +1,6 @@
 package zyx.algorithms4th.unitone;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 /**
  * @author Administrator
@@ -10,6 +11,7 @@ public class StackWithLink<T> implements Iterable<T> {
 
 	private Node top;
 	private int size;
+	private int modCount;
 	
 	public void push(T item) {
 		
@@ -18,12 +20,14 @@ public class StackWithLink<T> implements Iterable<T> {
 		top.item = item;
 		top.next = oldNode;
 		size++;
+		modCount++;
 	}
 	
 	public T pop() {
 		Node temp = top;
 		top = top.next;
 		size--;
+		modCount++;
 		return temp.item;
 	}
 	
@@ -92,14 +96,21 @@ public class StackWithLink<T> implements Iterable<T> {
 	private class MyStackIterator implements Iterator<T> {
 
 		Node cursor = top;
+		final int modifyCount = modCount;
 		
 		@Override
 		public boolean hasNext() {
+			if (modifyCount != modCount) {
+				throw new ConcurrentModificationException();
+			}
 			return cursor != null;
 		}
 
 		@Override
 		public T next() {
+			if (modifyCount != modCount) {
+				throw new ConcurrentModificationException();
+			}
 			T item = cursor.item;
 			cursor = cursor.next;
 			return item;

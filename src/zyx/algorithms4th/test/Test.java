@@ -1,14 +1,14 @@
 package zyx.algorithms4th.test;
 
-import zyx.algorithms4th.unitone.MyQueueWithLink;
-import zyx.algorithms4th.unitone.MyStackWithLink;
+import zyx.algorithms4th.unitone.QueueWithLink;
+import zyx.algorithms4th.unitone.StackWithLink;
 
 public class Test {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
 //		MyStackWithLink<String> stack = new MyStackWithLink<>();
-		MyQueueWithLink<String> stack = new MyQueueWithLink<>();
+		QueueWithLink<String> stack = new QueueWithLink<>();
 		for (int i = 0; i < 10; i++) {
 			stack.push(null);
 			stack.push("abc");
