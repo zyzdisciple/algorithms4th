@@ -8,8 +8,9 @@ public class UnitOneExercisePointFive {
 	
 	private static void e_1() {
 		//QuickFind qf = new QuickFind(10);
-		QuickUnion2 qf = new QuickUnion2(10);
+		//QuickUnion2 qf = new QuickUnion2(10);
 		//QuickUnion qf = new QuickUnion(10);
+		RoadQuickUnion qf = new RoadQuickUnion(10);
 		String input = "9-2, 3-4, 5-8, 7-2, 2-1, 5-7, 0-3, 4-2";
 		int[][] array = dealWithInput(input);
 		for (int i = 0, length = array.length; i < length; i++) {
@@ -214,6 +215,78 @@ public class UnitOneExercisePointFive {
 			}
 			return str.toString();
 		}
+	}
+	
+	//1.5.12
+	private static class RoadQuickUnion implements IQuickFindUnion {
+		
+		int array[];
+		int count;
+		int times;
+		
+		public RoadQuickUnion(int n) {
+			array = new int[n];
+			for (int i = 0; i < n; i++) {
+				array[i] = i;
+			}
+			count = n;
+		}
+		
+		@Override
+		public int find(int p) {
+			// TODO Auto-generated method stub
+			int temp = p;
+			int result;
+			while (true) {
+				if (array[p] == p) {
+					times++;
+					result = p;
+					break;
+				}
+				p = array[p];
+			}
+			p = result;
+			while(true) {
+				if (array[p] == result) {
+					return result;
+				}
+				temp = p;
+				array[temp] = result;
+				p = array[p];
+			}
+		}
+		@Override
+		public boolean connected(int p, int q) {
+			// TODO Auto-generated method stub
+			return find(p) == find(q);
+		}
+		@Override
+		public void union(int p, int q) {
+			// TODO Auto-generated method stub
+			int rootP = find(p);
+			int rootQ = find(q);
+			if (rootP == rootQ) {
+				return;
+			}
+			array[rootP] = rootQ;
+			count--;
+			times++;
+		}
+		@Override
+		public int count() {
+			// TODO Auto-generated method stub
+			return count;
+		}
+		
+		public String toString() {
+			// TODO Auto-generated method stub
+			StringBuilder str = new StringBuilder();
+			for (int i = 0, length = array.length; i < length; i++) {
+				str.append("" + array[i]);
+			}
+			return str.toString();
+		}
+		
 	}
 	
 	private static int[][] dealWithInput(String input) {
