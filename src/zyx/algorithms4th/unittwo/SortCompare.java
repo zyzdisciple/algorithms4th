@@ -8,18 +8,21 @@ public class SortCompare {
 	private final int N;
 	
 	public SortCompare(int length) {
-		generateArray();
 		N = length;
+		generateArray();
 	}
 	
 	public double time(AbstractSort<Double> sort) {
+		sort.setArray(array);
 		long start = new Date().getTime();
-		sort.sort(array);
+		sort.sort();
 		long end = new Date().getTime();
+		sort.show();
 		return end - start;
 	}
 	
 	private void generateArray() {
+		array = new Double[N];
 		for (int i = 0; i < N; i++) {
 			array[i] = (Comparable<Double>) Math.random();
 		}

@@ -2,33 +2,43 @@ package zyx.algorithms4th.unittwo;
 
 public abstract class AbstractSort<T> {
 
-	public abstract void sort(Comparable<T>[] a);
+	protected Comparable<T>[] array;
 	
-	public boolean less(Comparable<T> q, T p) {
-		return q.compareTo(p) <= 0;
+	public abstract void sort();
+	
+	@SuppressWarnings("unchecked")
+	public boolean less(int q, int p) {
+		return array[q].compareTo((T)array[p]) < 0;
 	}
 	
-	public void exchange(T[] a, int q, int p) {
-		T temp = a[q];
-		a[q] = a[p];
-		a[p] = temp;
+	public void exchange(int q, int p) {
+		Comparable<T> temp = array[q];
+		array[q] = array[p];
+		array[p] = temp;
 	}
 	
-	public void show(T[] a) {
+	public void show() {
 		System.out.println("****************************");
-		for (int i = 0, length = a.length; i < length; i++) {
-			System.out.print(a[i] + " ");
+		for (int i = 0, length = array.length; i < length; i++) {
+			System.out.print(array[i] + " ");
+			if ((i + 1) % 4 == 0) {
+				System.out.println();
+			}
 		}
+		System.out.println();
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	}
 	
-	@SuppressWarnings("unchecked")
-	public boolean isSorted(Comparable<T>[] a) {
-		for (int i = 0, length = a.length; i < length - 1; i++) {
-			if (!less(a[i], (T)a[i+1])) {
+	public boolean isSorted() {
+		for (int i = 0, length = array.length; i < length - 1; i++) {
+			if (!less(i, i + 1)) {
 				return false;
 			}
 		}
 		return true;
+	}
+	
+	public void setArray(Comparable<T>[] array) {
+		this.array = array;
 	}
 }
