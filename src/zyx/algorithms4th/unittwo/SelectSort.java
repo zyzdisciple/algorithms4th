@@ -1,5 +1,10 @@
 package zyx.algorithms4th.unittwo;
-
+/**
+ * 选择排序
+ * @author zyzdisciple 2017年12月8日17:26:36
+ *
+ * @param <T>
+ */
 public class SelectSort<T> extends AbstractSort<T> {
 	
 	@Override

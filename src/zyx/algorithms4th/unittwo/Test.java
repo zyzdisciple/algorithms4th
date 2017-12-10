@@ -1,15 +1,20 @@
 package zyx.algorithms4th.unittwo;
 
 public class Test {
+	
+	private static UnitTwoPonitOneExercises ut = new UnitTwoPonitOneExercises();
 
 	public static void main(String[] args) {
 		//testSelectSort();
 		//testInsertSort();
-		testShellSort();
+		//testShellSort();
+		testMergeSort();
+		//sort2124();
+		//sort2125();
 	}
 	
 	public static void testSelectSort() {
-		SortCompare sc = new SortCompare(1000);
+		SortCompare sc = new SortCompare(10000);
 		SelectSort<Double> ss = new SelectSort<Double>();
 		System.out.println(sc.time(ss));
 	}
@@ -25,4 +30,24 @@ public class Test {
 		ShellSort<Double> ss = new ShellSort<Double>();
 		System.out.println(sc.time(ss));
 	}
+	
+	public static void testMergeSort() {
+		SortCompare sc = new SortCompare(10000);
+		MergeSort<Double> ss = new MergeSort<>();
+		System.out.println(sc.time(ss));
+	}
+	
+	public static void sort2124() {
+		SortCompare sc = new SortCompare(10000);
+		UnitTwoPonitOneExercises.Sort2124<Double> ss = ut.new Sort2124<>();
+		System.out.println(sc.time(ss));
+	}
+	
+	public static void sort2125() {
+		SortCompare sc = new SortCompare(10000);
+		UnitTwoPonitOneExercises.Sort2125<Double> ss = ut.new Sort2125<>();
+		System.out.println(sc.time(ss));
+	}
+	
+	
 }

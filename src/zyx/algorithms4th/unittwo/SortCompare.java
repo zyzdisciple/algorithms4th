@@ -1,6 +1,7 @@
 package zyx.algorithms4th.unittwo;
 
 import java.util.Date;
+import java.util.Random;
 
 public class SortCompare {
 
@@ -27,4 +28,5 @@ public class SortCompare {
 			array[i] = (Comparable<Double>) Math.random();
 		}
 	}
+	
 }

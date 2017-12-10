@@ -11,6 +11,11 @@ public abstract class AbstractSort<T> {
 		return array[q].compareTo((T)array[p]) < 0;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public boolean less(Comparable<T> q, Comparable<T> p) {
+		return q.compareTo((T)p) < 0;
+	}
+	
 	public void exchange(int q, int p) {
 		Comparable<T> temp = array[q];
 		array[q] = array[p];
