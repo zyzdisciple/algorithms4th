@@ -7,13 +7,13 @@ public class MergeSort<T> extends AbstractSort<T> {
 	public void sort() {
 		// TODO Auto-generated method stub
 		Comparable<T>[] temp = new Comparable[array.length];
-		//sort(0, array.length - 1, temp);
-		sortn2o(temp);
+		sort(0, array.length - 1, temp);
+		//sortn2o(temp);
 	}
 	
 	private void sort(int lo, int hi, Comparable<T>[] temp) {
 		
-		if (hi - lo <= 1) {
+		if (hi - lo <= 3) {
 			sort(lo, hi);
 			return;
 		}
@@ -30,10 +30,11 @@ public class MergeSort<T> extends AbstractSort<T> {
 	
 	private void sort(int lo, int hi) {
 		
-		if (less(lo, hi))
-			return;
-		else
-			exchange(lo, hi);
+//		if (less(lo, hi))
+//			return;
+//		else
+//			exchange(lo, hi);
+		InsertSort.sort(array, lo, hi);
 	}
 	
 	private void merge(int lo, int mid, int hi, Comparable<T>[] temp) {

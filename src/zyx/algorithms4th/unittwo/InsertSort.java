@@ -19,5 +19,15 @@ public class InsertSort<T> extends AbstractSort<T> {
 		}
 		
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public static void sort(Comparable[] src, int lo, int hi) {
+		
+		for (int i = lo + 1, length = src.length; i <= hi && i < length; i++) {
+			for (int j = i; j > lo && less(src[j], src[j - 1]); j--) {
+				exchange(src, j, j - 1);
+			}
+		}
+	}
 
 }

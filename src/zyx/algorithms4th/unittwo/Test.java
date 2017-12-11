@@ -27,13 +27,13 @@ public class Test {
 	}
 	
 	public static void testShellSort() {
-		SortCompare sc = new SortCompare(10000);
+		SortCompare sc = new SortCompare(100000);
 		ShellSort<Double> ss = new ShellSort<Double>();
 		System.out.println(sc.time(ss));
 	}
 	
 	public static void testMergeSort() {
-		SortCompare sc = new SortCompare(1000000);
+		SortCompare sc = new SortCompare(50000);
 		MergeSort<Double> ss = new MergeSort<>();
 		System.out.println(sc.time(ss));
 	}
@@ -54,6 +54,16 @@ public class Test {
 		SortCompare sc = new SortCompare(10000);
 		UnitTwoPonitOneExercises.Sort2125<Double> ss = ut.new Sort2125<>();
 		System.out.println(sc.time(ss));
+	}
+	
+	@org.junit.Test
+	public void testInsertSort2() {
+		
+		Integer[] array = {2,34,6,1,3,56,3};
+		InsertSort.sort(array, 1, 7);
+		for (int i: array) {
+			System.out.println(i);
+		}
 	}
 	
 	
