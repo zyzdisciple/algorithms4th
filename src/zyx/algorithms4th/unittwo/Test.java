@@ -8,8 +8,8 @@ public class Test {
 		//testSelectSort();
 		//testInsertSort();
 		//testShellSort();
-		//testMergeSort();
-		testMergeSortImprove();
+		testMergeSort();
+		//testMergeSortImprove();
 		//sort2124();
 		//sort2125();
 	}
@@ -33,7 +33,7 @@ public class Test {
 	}
 	
 	public static void testMergeSort() {
-		SortCompare sc = new SortCompare(10000);
+		SortCompare sc = new SortCompare(1000000);
 		MergeSort<Double> ss = new MergeSort<>();
 		System.out.println(sc.time(ss));
 	}

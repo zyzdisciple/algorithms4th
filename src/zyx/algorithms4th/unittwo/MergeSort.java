@@ -7,7 +7,8 @@ public class MergeSort<T> extends AbstractSort<T> {
 	public void sort() {
 		// TODO Auto-generated method stub
 		Comparable<T>[] temp = new Comparable[array.length];
-		sort(0, array.length - 1, temp);
+		//sort(0, array.length - 1, temp);
+		sortn2o(temp);
 	}
 	
 	private void sort(int lo, int hi, Comparable<T>[] temp) {
@@ -62,11 +63,11 @@ public class MergeSort<T> extends AbstractSort<T> {
 		
 	}
 	
-	private void sortn2o(int lo, int hi) {
+	private void sortn2o(Comparable<T>[] temp) {
 		
-		for (int size = 1, length = array.length; size < length; size = size << 1) {
-			for (int i = 0; i < length; i += size << 1) {
-				//merge(i, i + size - 1, Math.min(i + size << 2 - 1, length - 1));
+		for (int size = 1, length = array.length; size < length; size = size + size) {
+			for (int i = 0; i < length - size; i += size + size) {
+				merge(i, i + size - 1, Math.min(i + (size << 1) - 1, length - 1), temp);
 			}
 		}
 	}
