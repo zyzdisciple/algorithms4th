@@ -2,29 +2,40 @@ package zyx.algorithms4th.unittwo;
 
 public class MergeSort<T> extends AbstractSort<T> {
 	
-	private Comparable<T>[] temp;
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public void sort() {
 		// TODO Auto-generated method stub
-		temp = new Comparable[array.length];
-		sort(0, array.length - 1);
+		Comparable<T>[] temp = new Comparable[array.length];
+		sort(0, array.length - 1, temp);
+	}
+	
+	private void sort(int lo, int hi, Comparable<T>[] temp) {
+		
+		if (hi - lo <= 1) {
+			sort(lo, hi);
+			return;
+		}
+		
+		int mid = (lo + hi) / 2;
+		sort(lo, mid, temp);
+		sort(mid + 1, hi, temp);
+		
+		if (!less(mid, mid + 1)) {
+			merge(lo, mid, hi, temp);
+		}
+		
 	}
 	
 	private void sort(int lo, int hi) {
-		if (lo >= hi)
+		
+		if (less(lo, hi))
 			return;
-		
-		int mid = (lo + hi) / 2;
-		sort(lo, mid);
-		sort(mid + 1, hi);
-		merge(lo, mid, hi);
-		
+		else
+			exchange(lo, hi);
 	}
 	
-	@SuppressWarnings("unchecked")
-	private void merge(int lo, int mid, int hi) {
+	private void merge(int lo, int mid, int hi, Comparable<T>[] temp) {
 		
 		//这里不直接使用lo hi 做变量的原因之一是, 为了代码清晰, 为以后修改留下一定空间.
 		//lf 和 rg 永远指向下一个需要被比较的元素;
@@ -49,6 +60,15 @@ public class MergeSort<T> extends AbstractSort<T> {
 			}
 		}
 		
+	}
+	
+	private void sortn2o(int lo, int hi) {
+		
+		for (int size = 1, length = array.length; size < length; size = size << 1) {
+			for (int i = 0; i < length; i += size << 1) {
+				//merge(i, i + size - 1, Math.min(i + size << 2 - 1, length - 1));
+			}
+		}
 	}
 
 }
