@@ -30,10 +30,6 @@ public class MergeSort<T> extends AbstractSort<T> {
 	
 	private void sort(int lo, int hi) {
 		
-//		if (less(lo, hi))
-//			return;
-//		else
-//			exchange(lo, hi);
 		InsertSort.sort(array, lo, hi);
 	}
 	

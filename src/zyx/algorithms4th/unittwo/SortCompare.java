@@ -13,6 +13,12 @@ public class SortCompare {
 		generateArray();
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public SortCompare(Comparable[] array) {
+		this.array = array;
+		N = array.length;
+	}
+	
 	public double time(AbstractSort<Double> sort) {
 		sort.setArray(array);
 		long start = new Date().getTime();
