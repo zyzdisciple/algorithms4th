@@ -193,11 +193,11 @@ public class UnitOneExercisePointFive {
 			if (qSize >= pSize) {
 				array[pRoot] = qRoot;
 				times++;
-				qSize += pSize;
+				size[pRoot] += size[qRoot];
 			} else {
 				array[qRoot] = pRoot;
 				times++;
-				pSize += qSize;
+				size[qRoot] += size[pRoot];
 			}
 		}
 

@@ -2,19 +2,24 @@ package zyx.algorithms4th.unittwo;
 
 import java.util.Arrays;
 import java.util.Collections;
-
-public class QuickSortImprove<T> extends AbstractSort<T>{
+/**
+ * 习题2.3.27
+ * @author Administrator
+ *
+ * @param <T>
+ */
+public class QuickSortIgnoreSmallArray<T> extends AbstractSort<T>{
 
 	@Override
 	public void sort() {
 		Collections.shuffle(Arrays.asList(array));
 		sort(0, array.length - 1);
+		InsertSort.sort(array, 0, array.length - 1);
 	}
 	
 	public void sort(int lo, int hi) {
 		
 		if (hi <= lo + 4) {
-			InsertSort.sort(array, lo, hi);
 			return;
 		}
 		

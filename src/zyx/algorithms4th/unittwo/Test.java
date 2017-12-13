@@ -13,7 +13,9 @@ public class Test {
 		//testShellSort();
 		//testMergeSort();
 		//testMergeSortImprove();
-		testQuickSort();
+		//testQuickSort();
+		testQuickSortImprove();
+		//testQuick3WaySort();
 		//sort2124();
 		//sort2125();
 		//sort235();
@@ -50,13 +52,53 @@ public class Test {
 	}
 	
 	public static void testQuickSort() {
-		SortCompare sc = new SortCompare(10000);
+		SortCompare sc = new SortCompare(1000000);
 		QuickSort<Double> ss = new QuickSort<>();
 		System.out.println(sc.time(ss));
+		//在测试中发现, 长度为0 和 1 的分别占到了 1/3的数组长度, 2仅仅是 1/10
+		//可以通过 插入排序的介入, 进一步改进算法.
 //		System.out.println("count0: " + ss.getCount0());
 //		System.out.println("count1: " + ss.getCount1());
 //		System.out.println("count2: " + ss.getCount2());
 	}
+	
+	public static void testQuickSortImprove() {
+//		SortCompare sc = new SortCompare(1000000);
+//		QuickSortImprove<Double> ss = new QuickSortImprove<>();
+//		System.out.println(sc.time(ss));
+		
+		//运行对比测试
+		SortCompare sc = new SortCompare();
+		QuickSortImprove<Double> ss = new QuickSortImprove<>();
+		//QuickSortIgnoreSmallArray<Double> ss = new QuickSortIgnoreSmallArray<>();
+		sc.time(ss, 10);
+		
+	}
+	
+	public static void testQuick3WaySort() {
+		Random r = new Random(47);
+		Integer[] array = new Integer[2];
+		for (int i = 0, length = array.length; i < length; i++) {
+			array[i] = r.nextInt(2);
+		}
+		
+		SortCompare sc = new SortCompare(array);
+		Quick3WaySort<Double> ss = new Quick3WaySort<>();
+		//QuickSortImprove<Double> ss = new QuickSortImprove<>();
+		//QuickSort<Double> ss = new QuickSort<>();
+		//MergeSortImprove<Double> ss = new MergeSortImprove<>();
+		//MergeSort<Double> ss = new MergeSort<>();
+		//ShellSort<Double> ss = new ShellSort<Double>();
+		System.out.println(sc.time(ss));
+		
+		//运行对比测试
+//		SortCompare sc = new SortCompare();
+//		Quick3WaySort<Double> ss = new Quick3WaySort<>();
+//		sc.time(ss, 10);
+		
+	}
+	
+	
 	
 	public static void sort2124() {
 		SortCompare sc = new SortCompare(10000);
