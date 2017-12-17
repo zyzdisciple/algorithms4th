@@ -14,8 +14,9 @@ public class Test {
 		//testMergeSort();
 		//testMergeSortImprove();
 		//testQuickSort();
-		testQuickSortImprove();
+		//testQuickSortImprove();
 		//testQuick3WaySort();
+		testHeapSort();
 		//sort2124();
 		//sort2125();
 		//sort235();
@@ -98,6 +99,12 @@ public class Test {
 		
 	}
 	
+	public static void testHeapSort() {
+		SortCompare sc = new SortCompare(1000000);
+		HeapSort<Double> ss = new HeapSort<>();
+		System.out.println(sc.time(ss));
+	}
+	
 	
 	
 	public static void sort2124() {
@@ -132,6 +139,11 @@ public class Test {
 		for (int i: array) {
 			System.out.println(i);
 		}
+	}
+	
+	@org.junit.Test
+	public void testNull() {
+		System.out.println(null == null);
 	}
 	
 	
