@@ -469,46 +469,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> implements ST<
 	}
 
 	@Override
+	//未实现, 在不储存父级节点的情况下, 用迭代的方式去遍历一棵树稍显困难.
 	public Iterator<Key> iterator() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	private class KeysIterator implements Iterator<Key> {
-		
-		private Key[] keys;
-		
-		private int count;
-		
-		@SuppressWarnings("unchecked")
-		public KeysIterator() {
-			count = 0;
-			if (isEmpty()) {
-				keys = (Key[]) new Object[1];
-				keys[0] = null;
-			}
-			
-			keys = (Key[]) new Object[root.N];
-			Node lf, parent = root, rg, current;
-			for (int i = 0, length = root.N, temp = length; i < length; i++) {
-				lf = parent.left;
-				if (lf != null) {
-					
-				}
-			}
-		}
-
-		@Override
-		public boolean hasNext() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public Key next() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
 	}
 }
