@@ -31,4 +31,14 @@ public interface ST<Key extends Comparable<Key>, Value> extends Iterable<Key>{
 	void deleteMax();
 	
 	void deleteMin();
+	
+	/**
+	 * 以下均为习题
+	 * @return
+	 */
+	boolean isBinaryTree();
+	
+	boolean isOrdered();
+	
+	boolean hasNoDuplicates();
 }

@@ -23,12 +23,16 @@ public class BasicTest {
 		value = new Integer[length];
 	}
 	
+	public ST<String, Integer> getSt() {
+		return st;
+	}
+	
 	public void testPut() {
 		initData();
 		long start = new Date().getTime();
 		put();
 		long end = new Date().getTime();
-		keys();
+		//keys();
 		System.out.println("putAll:" + (end - start));
 	}
 	
