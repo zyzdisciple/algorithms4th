@@ -41,4 +41,6 @@ public interface ST<Key extends Comparable<Key>, Value> extends Iterable<Key>{
 	boolean isOrdered();
 	
 	boolean hasNoDuplicates();
+	
+	void printLevel();
 }

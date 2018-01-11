@@ -1,6 +1,8 @@
 package zyx.algorithms4th.unitthree;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 二叉查找树
@@ -650,7 +652,7 @@ System.out.println("**************");
 				temp = pTemp.node;
 				pTemp = (BinarySearchTree<Key, Value>.ParentNode) parents[--current];
 				if (temp == pTemp.node.right) {
-					parents[current + 1] = null;
+					parents[current + 1] = null; //将回退的节点变为空
 					continue;
 				} else {
 					currentNode = pTemp; //同时遍历这棵树的右子树
@@ -766,5 +768,39 @@ System.out.println("**************");
 			return true;
 		}
 		return false;
+	}
+	
+	//3.2.37
+	public void printLevel() {
+		
+		printLevel(root);
+	}
+	
+	private void printLevel(Node node) {
+		
+		Queue<Node> list = new LinkedList<Node>();
+		list.add(node);
+		while (list.peek() != null) {
+			list = pushAndPrint(list);
+			System.out.println();
+		}
+		
+	}
+	
+	private Queue<Node> pushAndPrint(Queue<Node> container) {
+		Queue<Node> qTemp = new LinkedList<Node> ();
+		Node temp, lf, rg;
+		while ((temp = container.poll()) != null) {
+			System.out.print(temp + ", ");
+			lf = temp.left;
+			rg = temp.right;
+			if (lf != null) {
+				qTemp.add(lf);
+			}
+			if (rg != null) {
+				qTemp.add(rg);
+			}
+		}
+		return qTemp;
 	}
 }

@@ -6,7 +6,8 @@ public class Test {
 	
 	public static void main(String[] args) {
 		//diguiceshi();
-		yuhuofei();
+		//yuhuofei();
+		yinyongchuandi();
 	}
 	
 	public static void yuhuofei() {
@@ -24,5 +25,15 @@ public class Test {
 			System.out.println("哪一句先被执行?");
 			return;
 		}
+	}
+	
+	public static void yinyongchuandi() {
+		String s = new String("123");
+		yinyongchuandi(s);
+		System.out.println(s);
+	}
+	
+	private static void yinyongchuandi(String s) {
+		s = new String("456");
 	}
 }
