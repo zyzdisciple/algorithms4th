@@ -387,7 +387,6 @@ System.out.println("**************");
 
 	@Override
 	public Iterable<Key> keys() {
-		// TODO Auto-generated method stub
 		return () -> new KeysIterator();
 	}
 
@@ -549,7 +548,6 @@ System.out.println("**************");
 	 * 如果用递归实现, 思路较简单, 遍历左子树,直到左子树为空  再遍历右子树, 不要忘记根节点即可.
 	 */
 	public Iterator<Key> iterator() {
-		// TODO Auto-generated method stub
 		return new KeysIterator();
 	}
 	
