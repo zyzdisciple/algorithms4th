@@ -17,7 +17,8 @@ public class Test {
 		//integerTest();
 		//comparableTest();
 		//shuzuzengjiaTest();
-		asciiTest();
+		//asciiTest();
+		indexOfTest();
 	}
 	
 	public static void yuhuofei() {
@@ -102,5 +103,13 @@ public class Test {
 		System.out.println('z' + 1);
 		System.out.println('0' + 1);
 		System.out.println('9' + 1);
+	}
+	
+	private static void indexOfTest() {
+		System.out.println("abc0".indexOf(0));
+		System.out.println("abc0".indexOf('0'));
+		System.out.println("abc0".indexOf('a'));
+		System.out.println("abc0".indexOf(48));
+		System.out.println('0' + 1);
 	}
 }
